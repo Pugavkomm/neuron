@@ -39,7 +39,3 @@ plt.xlabel('y1')
 plt.title('y1=' + str(y1[0]) + '  y2 ='+str(y2[0]) + ' b =' + str(b) +' d=' + str(d) + ' alpha=' + str(alpha) + ' a=' + str(a) )
 plt.text(0, .01 , str(quantity) + ' points')
 plt.show()
-'''
-for i in range(quantity):
-    plt.plot(y1[i], y2[i], '.')
-plt.show()'''
