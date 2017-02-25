@@ -27,7 +27,7 @@ def F(x):
     if (x <= a):
         return alpha * x
     if (x > a):
-        return alpha * x + alpha * (b - a)
+        return alpha * x +  alpha*(b - a)
 
 
 print(F(1))
