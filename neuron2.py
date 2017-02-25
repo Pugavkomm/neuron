@@ -40,4 +40,5 @@ plt.title('y1=' + str(y1[0]) + '  y2 ='+str(y2[0]) + ' b =' + str(b) +' d=' + st
 plt.text(0, .01 , str(quantity) + ' points')
 plt.show()
 
+
 print("step")

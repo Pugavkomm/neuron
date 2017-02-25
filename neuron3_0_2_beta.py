@@ -88,7 +88,7 @@ plt.plot(step, x2)
 plt.show()
 
 
-
+'''
 def plot(step, xn, i):
     plt.plot(step, xn, color = '#008080')
     plt.title('x' + str(i))
@@ -101,6 +101,8 @@ def plot(step, xn, i):
 plot(step, x1, 1)
 plot(step, x2, 2)
 plot(step, x3, 3)
+'''
+
 
 plt.plot(step, x1_start, '.', color='green', label="x1")
 plt.plot(step, x2_start, '.', color='red', label="x2")
