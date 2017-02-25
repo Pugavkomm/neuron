@@ -101,7 +101,7 @@ def plot(step, xn, i):
 plot(step, x1, 1)
 plot(step, x2, 2)
 plot(step, x3, 3)
-'''
+''' ''''''
 
 
 plt.plot(step, x1_start, '.', color='green', label="x1")
