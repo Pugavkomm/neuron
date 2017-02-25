@@ -84,8 +84,7 @@ pylab.axis([100, n, -3, 3])
 
 pylab.show()
 plt.grid(True)
-plt.plot(step, x2)
-plt.show()
+
 
 
 '''
