@@ -27,7 +27,7 @@ def F(x):
     if (x <= a):
         return alpha * x
     if (x > a):
-        return alpha * x +  alpha*(b - a)
+        return alpha * x + alpha * (b - a)
 
 
 print(F(1))
@@ -51,11 +51,11 @@ for i in range(n - 1):
     x2[i + 1] = f2(x1[i], x2[i], x3[i])
     x3[i + 1] = f3(x1[i], x2[i], x3[i])
     if x1[i + 1] > a:
-        x1_start[i + 1] = 2
+        x1_start[i + 1] = 1
     if x2[i + 1] > a:
-        x2_start[i + 1] = 3
+        x2_start[i + 1] = 1
     if x3[i + 1] > a:
-        x3_start[i + 1] = 4
+        x3_start[i + 1] = 1
     step[i] = i
 step[n - 1] = n
 '''
@@ -66,26 +66,26 @@ plt.show()
 plt.plot(step, x3, color = 'red')
 plt.show()'''
 
-
 pylab.subplot(2, 2, 1)
-pylab.plot(step, x1, color = '#008080')
+pylab.plot(step, x1, color='#008080')
+pylab.plot([0, n], [a, a], '--', color = 'blue')
 pylab.title("x1")
-pylab.axis([100, n, -3, 3])
+pylab.axis([100, n, min(x1)-.1, max(x1)+.1])
 
 pylab.subplot(2, 2, 3)
-pylab.plot(step, x2, color = '#008080')
+pylab.plot(step, x2, color='#008080')
+pylab.plot([0, n], [a, a], '--', color = 'blue')
 pylab.title("x2")
-pylab.axis([100, n, -3, 3])
+pylab.axis([100, n, min(x2)-.1, max(x2)+.1])
 
 pylab.subplot(2, 2, 4)
-pylab.plot(step, x3, color = '#008080')
+pylab.plot(step, x3, color='#008080')
+pylab.plot([0, n], [a, a], '--', color = 'blue')
 pylab.title("x3")
-pylab.axis([100, n, -3, 3])
+pylab.axis([100, n, min(x3)-.1, max(x3)+.1])
 
 pylab.show()
 plt.grid(True)
-
-
 
 '''
 def plot(step, xn, i):
@@ -102,11 +102,10 @@ plot(step, x2, 2)
 plot(step, x3, 3)
 ''' ''''''
 
-
-plt.plot(step, x1_start, '.', color='green', label="x1")
-plt.plot(step, x2_start, '.', color='red', label="x2")
-plt.plot(step, x3_start, '.', color='blue', label="x3")
+plt.plot(step, x1_start, linestyle='-', color='black', label="x1")
+plt.plot(step, x2_start, linestyle='-', color='red', label="x2")
+plt.plot(step, x3_start, linestyle='-', color='blue', label="x3")
 plt.grid(True)
-plt.axis([100, n, 1, 7])
+plt.axis([100, n, 0, 7])
 plt.legend()
 plt.show()
