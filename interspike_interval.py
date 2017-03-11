@@ -118,3 +118,4 @@ plt.grid(True)
 plt.title(r'$a_1 = 1068, a_2 = 446.1, b_1 = 27.42, b_2 = 21.41, c_1 = 10.25, c_2 = 115.2$')
 plt.legend()
 plt.show()
+###
