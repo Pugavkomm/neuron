@@ -68,21 +68,21 @@ plt.show()'''
 
 pylab.subplot(2, 2, 1)
 pylab.plot(step, x1, color='#008080')
-pylab.plot([0, n], [a, a], '--', color = 'blue')
+pylab.plot([0, n], [a, a], '--', color='black')
 pylab.title("x1")
-pylab.axis([100, n, min(x1)-.1, max(x1)+.1])
+pylab.axis([100, n, min(x1) - .1, max(x1) + .1])
 
 pylab.subplot(2, 2, 3)
 pylab.plot(step, x2, color='#008080')
-pylab.plot([0, n], [a, a], '--', color = 'blue')
+pylab.plot([0, n], [a, a], '--', color='black')
 pylab.title("x2")
-pylab.axis([100, n, min(x2)-.1, max(x2)+.1])
+pylab.axis([100, n, min(x2) - .1, max(x2) + .1])
 
 pylab.subplot(2, 2, 4)
 pylab.plot(step, x3, color='#008080')
-pylab.plot([0, n], [a, a], '--', color = 'blue')
+pylab.plot([0, n], [a, a], '--', color='black')
 pylab.title("x3")
-pylab.axis([100, n, min(x3)-.1, max(x3)+.1])
+pylab.axis([100, n, min(x3) - .1, max(x3) + .1])
 
 pylab.show()
 plt.grid(True)
@@ -101,11 +101,31 @@ plot(step, x1, 1)
 plot(step, x2, 2)
 plot(step, x3, 3)
 ''' ''''''
-
+'''
 plt.plot(step, x1_start, linestyle='-', color='black', label="x1")
 plt.plot(step, x2_start, linestyle='-', color='red', label="x2")
 plt.plot(step, x3_start, linestyle='-', color='blue', label="x3")
 plt.grid(True)
+plt.axis([100, n, 0, 7])
+plt.legend()
+plt.show()
+'''
+two = [0, 1]
+
+
+def plot_end(x, col, n):
+    if x == a:
+        plt.plot([n, n],[0, 1], color=col, linestyle = '-')
+
+
+for i in range(n):
+    plot_end(x1_start[i], 'green', i)
+    plot_end(x2_start[i], 'black', i)
+    plot_end(x3_start[i], 'blue', i)
+    if i == n - 1:
+        plt.plot([i, i], [0, 0], color = 'green', label = 'x1')
+        plt.plot([i, i], [0, 0], color = 'black', label = 'x2')
+        plt.plot([i, i], [0, 0], color='blue', label='x3')
 plt.axis([100, n, 0, 7])
 plt.legend()
 plt.show()
