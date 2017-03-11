@@ -1,7 +1,5 @@
 import numpy as np
-import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
-from scipy.stats import histogram
 import pprint
 
 n = int(input('Количество точек'))
@@ -22,6 +20,16 @@ x3[0] = .47
 x1_start = np.zeros(n)
 x2_start = np.zeros(n)
 x3_start = np.zeros(n)
+
+def hist(x: object, Bool: object = True, quantity: object = 'auto', col: object = 'black', alp: object = .6) -> object:
+    if Bool:
+        plt.hist(x, quantity, color=col, alpha=alp)
+        plt.xlabel('interval')
+        plt.ylabel('spikes')
+        plt.grid(True)
+        plt.show()
+    else:
+        return plt.hist(x, quantity, color=col, alpha=alp)
 
 
 def F(x):
@@ -45,10 +53,10 @@ def f2(x1, x2, x3):
 def f3(x1, x2, x3):
     return F(x3) + d * (x1 - x3 + r * (x2 - x3))
 
+
 x1_step = []
 x2_step = []
 x3_step = []
-
 
 t1 = 0
 t2 = 0
@@ -60,7 +68,7 @@ for i in range(n - 1):
     x3[i + 1] = f3(x1[i], x2[i], x3[i])
     if x1[i + 1] > a:
         x1_start[i + 1] = 1
-        x1_step.append((i+1) - t1)
+        x1_step.append((i + 1) - t1)
         t1 = i + 1
     if x2[i + 1] > a:
         x2_start[i + 1] = 1
@@ -73,24 +81,13 @@ for i in range(n - 1):
     step[i] = i
 step[n - 1] = n
 
-print(x3_step)
-'''
-for i in range(n):
-    if x1_start[i] == 1:
 
-        plt.plot([i, i], [0, 1], linestyle = '-', color = 'red')
-plt.axis([100, n, 0, 7])
-plt.show()
-tau = np.histogram(x3_step)
-print('max  ', min(x2_step))
-print(tau)
-plt.hist(x1_step,1000,  color = 'black')
-plt.xlabel('interval')
-plt.show()
-plt.hist(x2_step,1000,  color = 'black')
-plt.xlabel('interval')
-plt.show()
-'''
+
+
+hist(x1_step)
+hist(x2_step)
+
+
 def apr(x):
     a1 = 1068
     b1 = 27.42
@@ -98,21 +95,26 @@ def apr(x):
     a2 = 446.1
     b2 = 21.41
     c2 = 115.2
-    return a1*np.exp(-((x - b1)/c1)**2) + a2*np.exp(-((x-b2)/c2)**2)
-ap = np.zeros(300-11)
-ax_st = np.zeros(300-11)
-for i in range(11 ,300, 1):
-    ap[i-11] = apr(i)
-    ax_st[i-11] = i
-l = plt.hist(x3_step,'auto',  color = 'black', alpha = .8)
+    return a1 * np.exp(-((x - b1) / c1) ** 2) + a2 * np.exp(-((x - b2) / c2) ** 2)
+
+
+ap = np.zeros(300 - 11)
+ax_st = np.zeros(300 - 11)
+for i in range(11, 300, 1):
+    ap[i - 11] = apr(i)
+    ax_st[i - 11] = i
+l = hist(x3_step, Bool=False)
 pprint.pprint(l)
 file_1 = open("snake.txt", "w")
-
 
 file_1.write(str(l[0]))
 file_1.close()
 plt.xlabel('interval')
+plt.ylabel('spikes')
 
-plt.plot(ax_st, ap, linestyle = '--', color = 'red', alpha = .9)
+plt.plot(ax_st, ap, linestyle='--', color='red', alpha=1, linewidth=.5, label=r'$a_1*exp[-(\frac{x-b1}{c_1})^2] '
+                                                                              r'+a_2*exp[-(\frac{x-b2}{c_2})^2]$')
+plt.grid(True)
+plt.title(r'$a_1 = 1068, a_2 = 446.1, b_1 = 27.42, b_2 = 21.41, c_1 = 10.25, c_2 = 115.2$')
+plt.legend()
 plt.show()
-
