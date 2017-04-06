@@ -3,20 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pylab
 
-n = 500
+n = 1000
 a = 1
 alpha = .2
 
-d = .3
+d = .45
 r = 1
 b =4.95
 x1 = np.zeros(n)
 x2 = np.zeros(n)
 x3 = np.zeros(n)
 step = np.zeros(n)
-x1[0] = 1000
-x2[0] = 1110
-x3[0] = 950
+x1[0] = 1.3
+x2[0] = 0.3
+x3[0] = .6
 x1_start = np.zeros(n)
 x2_start = np.zeros(n)
 x3_start = np.zeros(n)
@@ -38,7 +38,7 @@ def F(x, quast = 0):
 
 
 def f1(x1, x2, x3):
-    t = F(x1) + d * (x2 + x3 - 2 * x1)
+    return (F(x1) + d * (x2 + x3 - 2 * x1))
 
 
 def f2(x1, x2, x3):
@@ -47,6 +47,7 @@ def f2(x1, x2, x3):
 
 def f3(x1, x2, x3):
     return F(x3, quast = 3) + d * (x1 - x3 + r * (x2 - x3))
+
 
 
 for i in range(n - 1):
@@ -62,6 +63,16 @@ for i in range(n - 1):
         x3_start[i + 1] = 1
     step[i] = i
 step[n - 1] = n
+def per(x):
+    t  = x
+    for i in range(1, n):
+        if i%2 != 0:
+            print(t[i])
+            t[i] = 0
+    return t
+x1 = per(x1)
+x2 = per(x2)
+x3 = per(x3)
 print('это: \n ',x1, '\n', x2, '\n', x3)
 '''
 plt.plot(step, x1, color = 'red')
@@ -89,7 +100,7 @@ pylab.title("x2")
 pylab.axis([0, n, min(x2) - .1, max(x2) + .1])
 
 pylab.subplot(2, 2, 4)
-pylab.plot(step, x3,'.', color='#008080')
+pylab.plot(step, x3, color='#008080')
 pylab.plot(step, x3, ".")
 pylab.plot([0, n], [a, a], '--', color='black')
 pylab.plot([0, n], [0,0], '--', color='black')

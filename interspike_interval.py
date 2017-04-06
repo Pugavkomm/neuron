@@ -5,15 +5,15 @@ import pprint
 n = int(input('Количество точек'))
 a = 1
 alpha = .2
-d = .45
-r = 0.9
-b = 4.95
+d = .49
+r =.9
+b = 8
 
 x1 = np.zeros(n)
 x2 = np.zeros(n)
 x3 = np.zeros(n)
 step = np.zeros(n)
-x1[0] = .4
+x1[0] = .15
 
 x2[0] = .45
 x3[0] = .47
@@ -85,37 +85,21 @@ step[n - 1] = n
 
 
 hist(x1_step)
-hist(x2_step)
+hist(x3_step)
 
 
-def apr(x):
-    a1 = 1068
-    b1 = 27.42
-    c1 = 10.25
-    a2 = 446.1
-    b2 = 21.41
-    c2 = 115.2
-    return a1 * np.exp(-((x - b1) / c1) ** 2) + a2 * np.exp(-((x - b2) / c2) ** 2)
 
 
 ap = np.zeros(300 - 11)
 ax_st = np.zeros(300 - 11)
-for i in range(11, 300, 1):
-    ap[i - 11] = apr(i)
-    ax_st[i - 11] = i
-l = hist(x3_step, Bool=False)
-pprint.pprint(l)
-file_1 = open("snake.txt", "w")
 
-file_1.write(str(l[0]))
-file_1.close()
+
 plt.xlabel('interval')
 plt.ylabel('spikes')
 
-plt.plot(ax_st, ap, linestyle='--', color='red', alpha=1, linewidth=.5, label=r'$a_1*exp[-(\frac{x-b1}{c_1})^2] '
-                                                                              r'+a_2*exp[-(\frac{x-b2}{c_2})^2]$')
+
 plt.grid(True)
-plt.title(r'$a_1 = 1068, a_2 = 446.1, b_1 = 27.42, b_2 = 21.41, c_1 = 10.25, c_2 = 115.2$')
+plt.title(r'$a_1 = 1000, a_2 = 446.1, b_1 = 27.42, b_2 = 21.41, c_1 = 10.25, c_2 = 115.2$')
 plt.legend()
 plt.show()
 ###
