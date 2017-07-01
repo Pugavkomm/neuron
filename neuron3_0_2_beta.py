@@ -1,3 +1,4 @@
+# coding=utf-8
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,16 +8,16 @@ n = 500
 a = 1
 alpha = .2
 
-d = .3
-r = 1
+d = .44
+r = .9
 b =4.95
 x1 = np.zeros(n)
 x2 = np.zeros(n)
 x3 = np.zeros(n)
 step = np.zeros(n)
-x1[0] = 1000
-x2[0] = 1110
-x3[0] = 950
+x1[0] = 1.1
+x2[0] = .5
+x3[0] = .9
 x1_start = np.zeros(n)
 x2_start = np.zeros(n)
 x3_start = np.zeros(n)
@@ -38,7 +39,7 @@ def F(x, quast = 0):
 
 
 def f1(x1, x2, x3):
-    t = F(x1) + d * (x2 + x3 - 2 * x1)
+    return F(x1) + d * (x2 + x3 - 2 * x1)
 
 
 def f2(x1, x2, x3):
